@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/foodMenuListFragment">
+
+    <fragment
+        android:id="@+id/foodMenuListFragment"
+        android:name="com.cjmobileapps.foodmenuandroid.ui.list.FoodMenuListFragment"
+        android:label="@string/title_list">
+
+        <action
+            android:id="@+id/action_foodMenuList_to_foodMenuDetail"
+            app:destination="@+id/foodMenuDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/foodMenuDetailFragment"
+        android:name="com.cjmobileapps.foodmenuandroid.ui.detail.FoodMenuDetailFragment"
+        android:label="@string/title_detail">
+
+        <argument
+            android:name="meal"
+            app:argType="com.cjmobileapps.foodmenuandroid.data.model.Meal"
+            app:nullable="false" />
+    </fragment>
+</navigation>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FoodMenu</string>
+    <string name="title_list">List</string>
+    <string name="title_detail">Detail</string>
+    <string name="no_menu_found">No Menu Found</string>
+    <string name="meal_image">Meal Image</string>
+    <string name="error_occurred">Error occurred try again later</string>
+</resources>
