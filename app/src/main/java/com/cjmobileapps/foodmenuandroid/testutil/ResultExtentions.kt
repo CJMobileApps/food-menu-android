@@ -1,4 +1,4 @@
-package com.cjmobileapps.foodmenuandroid.util
+package com.cjmobileapps.foodmenuandroid.testutil
 
 import retrofit2.Response
 

@@ -4,9 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cjmobileapps.foodmenuandroid.data.FoodMenuService
 import com.cjmobileapps.foodmenuandroid.data.model.Meal
-import com.cjmobileapps.foodmenuandroid.util.RxDispatchers
-import com.cjmobileapps.foodmenuandroid.util.onError
-import com.cjmobileapps.foodmenuandroid.util.onSuccess
+import com.cjmobileapps.foodmenuandroid.testutil.CoroutineDispatchers
+import com.cjmobileapps.foodmenuandroid.testutil.onError
+import com.cjmobileapps.foodmenuandroid.testutil.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import timber.log.Timber
@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FoodMenuListViewModel @Inject constructor(
     private val foodMenuService: FoodMenuService,
-    private val rxDispatchers: RxDispatchers
+    private val coroutineDispatchers: CoroutineDispatchers
 ) : ViewModel() {
     private val compositeJob = Job()
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -47,18 +47,18 @@ class FoodMenuListViewModel @Inject constructor(
 
     private fun getMenu() {
         mealsAreLoadingMutableLiveData.value = true
-        GlobalScope.launch(compositeJob + rxDispatchers.io + exceptionHandler) {
+        GlobalScope.launch(compositeJob + coroutineDispatchers.io + exceptionHandler) {
             val menuAsync = foodMenuService.getMenuAsync()
             menuAsync
                 .await()
                 .onSuccess { menu ->
-                    withContext(rxDispatchers.main) {
+                    withContext(coroutineDispatchers.main) {
                         mealsMutableLiveData.value = menu.meals
                         mealsAreLoadingMutableLiveData.value = false
                     }
                 }
                 .onError {
-                    withContext(rxDispatchers.main) {
+                    withContext(coroutineDispatchers.main) {
                         Timber.tag(tag).e("getMenu() error occurred")
                         showDefaultErrorMessageLiveData.value = true
                         showDefaultErrorMessageLiveData.value = false

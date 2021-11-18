@@ -1,6 +1,7 @@
 package com.cjmobileapps.foodmenuandroid.hilt.module
 
-import com.cjmobileapps.foodmenuandroid.util.RxDispatchers
+import com.cjmobileapps.foodmenuandroid.testutil.CoroutineDispatchers
+import com.cjmobileapps.foodmenuandroid.testutil.CoroutineDispatchersImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,11 +10,11 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-class CoroutineModule {
+class CoroutinesModule {
 
     @Singleton
     @Provides
-    fun rxDispatcher(): RxDispatchers {
-        return RxDispatchers
+    fun coroutinesDispatchers() : CoroutineDispatchers {
+        return CoroutineDispatchersImpl
     }
 }

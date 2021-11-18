@@ -1,4 +1,4 @@
-package com.cjmobileapps.foodmenuandroid
+package com.cjmobileapps.foodmenuandroid.testutil
 
 import org.junit.After
 import org.junit.Before

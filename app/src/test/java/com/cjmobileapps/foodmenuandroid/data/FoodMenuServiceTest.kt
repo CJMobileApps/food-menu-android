@@ -1,6 +1,6 @@
 package com.cjmobileapps.foodmenuandroid.data
 
-import com.cjmobileapps.foodmenuandroid.BaseTest
+import com.cjmobileapps.foodmenuandroid.testutil.BaseTest
 import com.cjmobileapps.foodmenuandroid.network.FoodMenuApi
 import kotlinx.coroutines.*
 import org.junit.Assert
@@ -18,7 +18,6 @@ class FoodMenuServiceTest : BaseTest() {
     private lateinit var service: FoodMenuService
 
     private val mockMenu = FakeData.menu
-
 
     @Before
     fun setup() {
